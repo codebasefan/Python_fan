@@ -63,7 +63,7 @@ def snd_mail(username,password,contents):
 	    print('error',e) #打印错误
 
 def parse_url(url,headers):
-	data = requests.get(url_black, headers = headers)
+	data = requests.get(url, headers = headers)
 
 	reg_price = r'itemprop="price" content="(.+?)">'
 	re.compile(reg_price)
@@ -73,7 +73,7 @@ def parse_url(url,headers):
 		contents = 'less than 70'
 		# print(contents)
 	else:
-		contents = "great than 70"
+		contents = "equal or great than 70"
 		# print(contents)
 	return contents
 
