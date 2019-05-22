@@ -43,7 +43,7 @@ def snd_mail(username,password,contents):
 	#邮件内容设置
 	message = MIMEText(contents,'plain','utf-8')
 	#邮件主题       
-	message['Subject'] = 'title'
+	message['Subject'] = 'Adidas Superstar query result'
 	#发送方信息
 	message['From'] = sender
 	#接受方信息     
@@ -68,16 +68,16 @@ def parse_url(url,headers):
 	reg_price = r'itemprop="price" content="(.+?)">'
 	re.compile(reg_price)
 	price_list = re.findall(reg_price,str(data.content))
-	# print(price_list)
+	print(price_list)
 	if float(price_list[0]) < 70.00:
 		contents = 'less than 70'
 		# print(contents)
 	else:
-		contents = "equal or great than 70"
+		contents = ("equal or greater than 70, the price is %f" % float(price_list[0])) 
 		# print(contents)
 	return contents
 
 if __name__ == '__main__':
 	password = get_password(service,username)
-	contents = parse_url(url_black,headers)
+	contents = parse_url(url_gray,headers)
 	snd_mail(username,password,contents)
